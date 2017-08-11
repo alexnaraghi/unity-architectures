@@ -264,7 +264,7 @@ namespace NoOO
                                 v = new Vector2(Random.Range(0f, 100f), Random.Range(0f, 100f));
 
                                 var offsetToPlayer = (v - new Vector2(player.transform.position.x, player.transform.position.y));
-                                isTooCloseToPlayer = offsetToPlayer.sqrMagnitude < 1f;
+                                isTooCloseToPlayer = offsetToPlayer.sqrMagnitude < 5f;
                             }
                             while (isTooCloseToPlayer);
 

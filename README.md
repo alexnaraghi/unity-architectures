@@ -1,10 +1,10 @@
 # unity-architectures
-The repo demonstrates a variety of different approaches to the same problem, creating a simple Asteroids game in Unity.
+The repo demonstrates a variety of different implementations that result in the same solution, a simple Asteroids game in Unity.
 
 ## Why
-Unity projects involve a confluence of design philosophies from the engine team, plugin apis, and single or team of game developers.  It's fascinating to walk in another developer's shoes and understand how they solve problem in a completely different way, sometimes equally valid, other times with notable drawbacks.
+Unity projects involve a confluence of design philosophies from the engine team, plugin apis, and single or team of game developers.  It's fascinating and instructive to walk in another developer's shoes and understand how they solve problem in a completely different way, sometimes equally valid, other times with notable drawbacks.
 
-This repository demonstrates some simple theses extended out to a variation of the classic Asteroids game.  By making the same game with different implementations, it becomes easy to compare and contrast the approaches.
+This repository demonstrates some simple theses extended out to a variation of the classic Asteroids game.  By making the same game with different implementations, it becomes easy to compare and contrast aspects of the approaches.
 
 Implementing such a simple project is absolutely NOT sufficent to draw conclusions on the validity of an architecture when extended to a large project.  To be fair, it is very hard to take ANY repository and draw conclusions on how its architecture would apply to a different game.
 
@@ -30,9 +30,13 @@ This architecture, or you might call it an anti-architecture, avoids object-orie
 
 Almost all code is in one class, specifically one update loop.  It is not very customizable since tweakable parameters are all magic numbers.  Gameplay objects are generated in code rather than prefabs.
 
+### Inheritance
+This architecture demonstrates the use of inheritance to reuse common code in systems that can be represented hierarchially.  It includes a game state system and an entity system that leverage inheritance.
+
+There are dangers with adding too many levels of inheritance because it makes the sharing of functionality very rigid, so the entity system used here would probably not be suitable for a non-trivial project.  However, when used sparingly inheritance can enforce strong compile-time constraints and more elegant scoped code-sharing than with interfaces alone.
+
 ## Future Additions
-I'd like to add a couple additional architectures that are popular.
-- Inheritance-based
+I'd like to add a few additional architectures that are popular.
 - Data oriented, decoupled from Unity like the Entitas example but not using ECS
 - Dependecy Injection/Everything is a binding (Zenject?)
 - MVVVM or MVC
